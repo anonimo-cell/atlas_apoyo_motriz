@@ -11,15 +11,19 @@ let tipoFiltroGlobal = 1;   // 1 = Comercializado, 0 = Bajo coste
 
 // Para las tarjetas del catálogo solo pedimos estas columnas. Lo pesado
 // (pasos con sus fotos, materiales, textos largos) se pide al abrir la ficha.
-const COLUMNAS_TARJETA = 'id,titulo,imagen_url,producto,precio,dificultad,tiempo,fecha,usuario,categoria,categoria1,categoria2';
+const COLUMNAS_TARJETA = 'id,titulo,imagen_url,producto,precio,dificultad,tiempo,fecha,usuario,categoria1,categoria2';
 const COLUMNAS_DETALLE = 'descripcion,conclusiones,materiales,pasos,enlace';
+
+// La tabla es común a las webs de Atlas: aquí solo mostramos los productos
+// marcados para discapacidad visual (columna "discapacidad", en minúsculas)
+const FILTRO_DISCAPACIDAD = `discapacidad=cs.${encodeURIComponent('["visual"]')}`;
 
 // Catálogos ya descargados (por dirección de consulta): volver a una
 // categoría ya abierta es instantáneo. Se vacía al subir un producto nuevo.
 const cacheCatalogo = new Map();
 
 async function cargarProductos(consulta) {
-    const url = `${SUPABASE_URL}/rest/v1/productos_parkinson?select=${COLUMNAS_TARJETA}&${consulta}`;
+    const url = `${SUPABASE_URL}/rest/v1/catalogo_productos?select=${COLUMNAS_TARJETA}&${FILTRO_DISCAPACIDAD}&${consulta}`;
     if (cacheCatalogo.has(url)) return cacheCatalogo.get(url);
 
     const respuesta = await fetch(url, {
@@ -39,7 +43,7 @@ async function cargarProductos(consulta) {
 async function completarProducto(prod) {
     if (prod.completo) return;
 
-    const respuesta = await fetch(`${SUPABASE_URL}/rest/v1/productos_parkinson?select=${COLUMNAS_DETALLE}&id=eq.${prod.id}`, {
+    const respuesta = await fetch(`${SUPABASE_URL}/rest/v1/catalogo_productos?select=${COLUMNAS_DETALLE}&id=eq.${prod.id}`, {
         headers: {
             'apikey': SUPABASE_KEY,
             'Authorization': `Bearer ${SUPABASE_KEY}`
@@ -113,7 +117,7 @@ async function abrirCatalogoProductos(boton) {
         `;
 
         try {
-            productosGlobales = await cargarProductos(`categoria=ilike.${encodeURIComponent(tituloCategoria)}&order=fecha.desc`);
+            productosGlobales = await cargarProductos(`categoria2=ilike.${encodeURIComponent(tituloCategoria)}&order=fecha.desc`);
 
             const btnComercializado = document.getElementById('btn-opcion-2');
             const btnBajoCoste = document.getElementById('btn-opcion-1');
@@ -192,7 +196,6 @@ async function abrirDetalleVerProducto(indiceProducto) {
 
         let cat1 = producto.categoria1 && producto.categoria1 !== "Sin categoría" && producto.categoria1 !== "No seleccionada" ? producto.categoria1 : null;
         let cat2 = producto.categoria2 && producto.categoria2 !== "Sin categoría" && producto.categoria2 !== "No seleccionada" ? producto.categoria2 : null;
-        let cat3 = producto.categoria && producto.categoria !== "Sin categoría" && producto.categoria !== "No seleccionada" ? producto.categoria : null;
 
         // Si existe Nivel 1, permitimos que haga clic para volver a esa categoría
         if (cat1) {
@@ -202,14 +205,6 @@ async function abrirDetalleVerProducto(indiceProducto) {
         // Si existe Nivel 2 y es diferente al Nivel 1
         if (cat2 && cat2 !== cat1) {
             migasHTML += `<span class="miga-separador">&rarr;</span><span class="miga-enlace" onclick="regresarAnterior()">${cat2}</span>`;
-        }
-
-        // Condición de Nivel 3 (Solo para Vestirse o Higiene)
-        if (cat2) {
-            let cat2Lower = cat2.toLowerCase();
-            if ((cat2Lower.includes("vestir") || cat2Lower.includes("higiene")) && cat3 && cat3 !== cat2) {
-                migasHTML += `<span class="miga-separador">&rarr;</span><span class="miga-enlace" onclick="regresarAnterior()">${cat3}</span>`;
-            }
         }
 
         // Título final del producto (como texto actual, sin enlace)
@@ -618,7 +613,7 @@ document.addEventListener('keydown', (evento) => {
 // VALORACIONES: "ME GUSTA" / "NO ME GUSTA"
 // Solo votan los usuarios con sesión iniciada. El voto se guarda en la tabla
 // "valoraciones" (uno por usuario y producto) y la función votar_producto
-// recalcula las columnas me_gusta y no_gusta de productos_parkinson.
+// recalcula las columnas me_gusta y no_gusta de catalogo_productos.
 // (SQL en sql/valoraciones.sql)
 // =========================================================================
 const TEXTOS_VOTO = { me_gusta: 'Me gusta', no_gusta: 'No me gusta' };
@@ -766,11 +761,11 @@ function comprobarSesionYAbrirSubida(elemento) {
 const normalizarCategoria = texto => (texto || '').trim().toLowerCase();
 const CATEGORIA_VACIA = ['', 'sin categoría', 'no seleccionada'];
 
-// Ruta de cada producto: [nivel 1, nivel 2, nivel 3], sin huecos ni repetidos
-// (p. ej. "Comer y beber" puede venir en el nivel 2 y en el 3)
+// Ruta de cada producto: [nivel 1, nivel 2], sin huecos ni repetidos
+// (p. ej. "Otros" puede venir en el nivel 1 y en el 2)
 function rutaDeProducto(prod) {
     const ruta = [];
-    [prod.categoria1, prod.categoria2, prod.categoria].forEach(cat => {
+    [prod.categoria1, prod.categoria2].forEach(cat => {
         const c = normalizarCategoria(cat);
         if (!CATEGORIA_VACIA.includes(c) && ruta[ruta.length - 1] !== c) ruta.push(c);
     });
@@ -780,7 +775,7 @@ function rutaDeProducto(prod) {
 async function actualizarCategoriasVisibles() {
     let productos;
     try {
-        const respuesta = await fetch(`${SUPABASE_URL}/rest/v1/productos_parkinson?select=categoria1,categoria2,categoria`, {
+        const respuesta = await fetch(`${SUPABASE_URL}/rest/v1/catalogo_productos?select=categoria1,categoria2&${FILTRO_DISCAPACIDAD}`, {
             headers: {
                 'apikey': SUPABASE_KEY,
                 'Authorization': `Bearer ${SUPABASE_KEY}`

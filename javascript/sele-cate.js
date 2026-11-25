@@ -5,10 +5,8 @@ window.addEventListener('DOMContentLoaded', () => {
     // Borramos todo de memoria (tanto bajo coste como comercializado)
     localStorage.removeItem('categoriaGuardadaNombre');
     localStorage.removeItem('subcategoriaGuardada');
-    localStorage.removeItem('subcategoriaNivel3Guardada');
     localStorage.removeItem('categoriaGuardadaNombre-com');
     localStorage.removeItem('subcategoriaGuardada-com');
-    localStorage.removeItem('subcategoriaNivel3Guardada-com');
 
     // Reseteamos Bajo Coste
     resetearFormularioDOM('');
@@ -19,18 +17,14 @@ window.addEventListener('DOMContentLoaded', () => {
 function resetearFormularioDOM(sufijo) {
     const btnN1 = document.getElementById(`valor-n1${sufijo}`);
     const btnN2 = document.getElementById(`valor-n2${sufijo}`);
-    const btnN3 = document.getElementById(`valor-n3${sufijo}`);
     const imgN1 = document.getElementById(`icono-elegido-n1${sufijo}`);
     const imgN2 = document.getElementById(`icono-elegido-n2${sufijo}`);
-    const imgN3 = document.getElementById(`icono-elegido-n3${sufijo}`);
 
     if (btnN1) btnN1.innerText = "No seleccionada";
     if (btnN2) btnN2.innerText = "No seleccionada";
-    if (btnN3) btnN3.innerText = "No seleccionada";
     
     if (imgN1) { imgN1.src = ""; imgN1.style.display = "none"; }
     if (imgN2) { imgN2.src = ""; imgN2.style.display = "none"; }
-    if (imgN3) { imgN3.src = ""; imgN3.style.display = "none"; }
 }
 
 // ==========================================
@@ -65,7 +59,7 @@ function abrirModalNivel2(sufijo = window.formularioActivoActual || '') {
     const mapa = {
         "Autonomía y cuidado": "modal-autonomia",
         "Ocio": "modal-ocio",
-        "Movilidad": "modal-movilidad",
+        "Movilidad y orientación": "modal-movilidad",
         "Comunicación": "modal-comunica",
         "Tareas cotidianas": "modal-productividad"
     };
@@ -74,29 +68,6 @@ function abrirModalNivel2(sufijo = window.formularioActivoActual || '') {
 
     if (idModal) {
         abrirModal(idModal);
-    }
-}
-
-function abrirModalNivel3(sufijo = window.formularioActivoActual || '') {
-    window.formularioActivoActual = sufijo;
-    const cat1 = localStorage.getItem(`categoriaGuardadaNombre${sufijo}`);
-    const cat2 = localStorage.getItem(`subcategoriaGuardada${sufijo}`);
-
-    if (!cat1 || cat1 === "No seleccionada") {
-        mostrarAvisoCategoria(sufijo, 'Selecciona primero una categoría.');
-        return;
-    }
-
-    if (!cat2 || cat2 === "No seleccionada") {
-        mostrarAvisoCategoria(sufijo, 'Selecciona primero una subcategoría.');
-        return;
-    }
-
-    mostrarAvisoCategoria(sufijo, '');
-
-    // Solo se abre si el Nivel 2 es Higiene
-    if (cat2.trim() === "Higiene") {
-        abrirModal('modal-n3-higiene');
     }
 }
 
@@ -116,22 +87,17 @@ function seleccionarCatenivel1(boton) {
     const nuevoTexto = boton.querySelector('.btn-cate-txt').innerText.trim();
     const textoAnterior = localStorage.getItem(`categoriaGuardadaNombre${sufijo}`);
 
-    // Si la categoría cambia, borramos los Niveles 2 y 3 del formulario correspondiente
+    // Si la categoría cambia, borramos el Nivel 2 del formulario correspondiente
     if (nuevoTexto !== textoAnterior) {
         localStorage.removeItem(`subcategoriaGuardada${sufijo}`);
-        localStorage.removeItem(`subcategoriaNivel3Guardada${sufijo}`);
 
         // Limpiamos textos
         const btnN2 = document.getElementById(`valor-n2${sufijo}`);
-        const btnN3 = document.getElementById(`valor-n3${sufijo}`);
         if (btnN2) btnN2.innerText = "No seleccionada";
-        if (btnN3) btnN3.innerText = "No seleccionada";
 
         // Limpiamos imágenes
         const imgN2 = document.getElementById(`icono-elegido-n2${sufijo}`);
-        const imgN3 = document.getElementById(`icono-elegido-n3${sufijo}`);
         if (imgN2) { imgN2.src = ""; imgN2.style.display = "none"; }
-        if (imgN3) { imgN3.src = ""; imgN3.style.display = "none"; }
     }
 
     // Guardamos y actualizamos Nivel 1
@@ -154,7 +120,7 @@ function seleccionarCatenivel1(boton) {
         }
     }
 
-    // --- MAGIA: SI EL NIVEL 1 ES "OTROS", AUTOCOMPLETAR NIVEL 2 Y 3 ---
+    // --- MAGIA: SI EL NIVEL 1 ES "OTROS", AUTOCOMPLETAR NIVEL 2 ---
     if (nuevoTexto.toLowerCase() === 'otros') {
         
         // Forzar Nivel 2 a "Otros"
@@ -172,22 +138,6 @@ function seleccionarCatenivel1(boton) {
                 imgDestinoN2.style.display = 'none';
             }
         }
-
-        // Forzar Nivel 3 a "Otros"
-        localStorage.setItem(`subcategoriaNivel3Guardada${sufijo}`, 'Otros');
-        const btnN3 = document.getElementById(`valor-n3${sufijo}`);
-        if (btnN3) btnN3.innerText = 'Otros';
-        
-        const imgDestinoN3 = document.getElementById(`icono-elegido-n3${sufijo}`);
-        if (imgDestinoN3) {
-            if (iconSrc) {
-                imgDestinoN3.src = iconSrc;
-                imgDestinoN3.style.display = 'block';
-            } else {
-                imgDestinoN3.src = '';
-                imgDestinoN3.style.display = 'none';
-            }
-        }
     }
 
     cerrarModal('modal-categorias1');
@@ -200,7 +150,6 @@ function seleccionarCategoria2(boton) {
     const sufijo = window.formularioActivoActual || '';
     mostrarAvisoCategoria(sufijo, '');
     const nuevoTexto = boton.querySelector('.btn-cate-txt').innerText.trim();
-    const textoAnterior = localStorage.getItem(`subcategoriaGuardada${sufijo}`);
 
     // Guardamos y actualizamos Nivel 2
     localStorage.setItem(`subcategoriaGuardada${sufijo}`, nuevoTexto);
@@ -219,62 +168,6 @@ function seleccionarCategoria2(boton) {
         } else {
             imgDestinoN2.src = '';
             imgDestinoN2.style.display = 'none';
-        }
-    }
-
-    // Lógica Automática del Nivel 3
-    const btnN3 = document.getElementById(`valor-n3${sufijo}`);
-    const imgDestinoN3 = document.getElementById(`icono-elegido-n3${sufijo}`);
-
-    if (nuevoTexto === "Higiene") {
-        if (nuevoTexto !== textoAnterior) {
-            localStorage.removeItem(`subcategoriaNivel3Guardada${sufijo}`);
-            if (btnN3) btnN3.innerText = "No seleccionada";
-            if (imgDestinoN3) { imgDestinoN3.src = ""; imgDestinoN3.style.display = "none"; }
-        }
-    } else {
-        localStorage.setItem(`subcategoriaNivel3Guardada${sufijo}`, nuevoTexto);
-        if (btnN3) btnN3.innerText = nuevoTexto;
-        
-        if (imgDestinoN3) {
-            if (iconSrc) {
-                imgDestinoN3.src = iconSrc;
-                imgDestinoN3.style.display = 'block';
-            } else {
-                imgDestinoN3.src = '';
-                imgDestinoN3.style.display = 'none';
-            }
-        }
-    }
-
-    cerrarModal(boton);
-}
-
-// ==========================================
-// LÓGICA DE SELECCIÓN: CATEGORÍA NIVEL 3
-// ==========================================
-function seleccionarCategoria3(boton) {
-    const sufijo = window.formularioActivoActual || '';
-    mostrarAvisoCategoria(sufijo, '');
-    const texto = boton.querySelector('.btn-cate-txt').innerText.trim();
-
-    // Guardamos y actualizamos Nivel 3
-    localStorage.setItem(`subcategoriaNivel3Guardada${sufijo}`, texto);
-    const btnN3 = document.getElementById(`valor-n3${sufijo}`);
-    if (btnN3) btnN3.innerText = texto;
-
-    // MAGIA DE LA IMAGEN (Nivel 3)
-    const imgElement = boton.querySelector('img');
-    const iconSrc = imgElement ? imgElement.getAttribute('src') : null;
-    const imgDestino = document.getElementById(`icono-elegido-n3${sufijo}`);
-
-    if (imgDestino) {
-        if (iconSrc) {
-            imgDestino.src = iconSrc;
-            imgDestino.style.display = 'block';
-        } else {
-            imgDestino.src = '';
-            imgDestino.style.display = 'none';
         }
     }
 

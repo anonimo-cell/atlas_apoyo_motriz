@@ -22,12 +22,12 @@ create policy "cada usuario ve sus votos" on public.valoraciones
   using (user_id = auth.uid());
 
 -- 2. Los contadores empiezan en 0 en lugar de vacíos
-update public.productos_parkinson set me_gusta = 0 where me_gusta is null;
-update public.productos_parkinson set no_gusta = 0 where no_gusta is null;
+update public.catalogo_productos set me_gusta = 0 where me_gusta is null;
+update public.catalogo_productos set no_gusta = 0 where no_gusta is null;
 
 -- 3. Función para votar. p_voto: 'me_gusta', 'no_gusta' o null (quitar el voto).
 --    Guarda el voto del usuario y recalcula las columnas me_gusta y no_gusta
---    de public.productos_parkinson.
+--    de public.catalogo_productos.
 create or replace function public.votar_producto(p_producto_id bigint, p_voto text)
 returns json
 language plpgsql
@@ -54,7 +54,7 @@ begin
     raise exception 'Voto no válido';
   end if;
 
-  update productos_parkinson
+  update catalogo_productos
      set me_gusta = (select count(*) from valoraciones where producto_id = p_producto_id and voto = 'me_gusta'),
          no_gusta = (select count(*) from valoraciones where producto_id = p_producto_id and voto = 'no_gusta')
    where id = p_producto_id

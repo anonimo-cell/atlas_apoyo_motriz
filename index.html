@@ -144,7 +144,7 @@
               <img src="svg/cate/auto/auto.png" class="cap-icon-cate" alt="">
             </button>
             <button type="button" class="btn-cate" data-vista="vista-movilidad" onclick="seleccionarCategoria1(this)">
-              <span class="btn-cate-txt">Movilidad</span>
+              <span class="btn-cate-txt">Movilidad y orientación</span>
               <img src="svg/cate/movilidad/mover.png" class="cap-icon-cate" alt="">
             </button>
             <button type="button" class="btn-cate" data-vista="vista-comunica" onclick="seleccionarCategoria1(this)">
@@ -326,8 +326,8 @@
                 <label><input type="checkbox" name="tipo-discapacidad-baj" value="Auditiva"><span>Auditiva</span><img src="svg/discapacidad/auditiva.svg" alt="" aria-hidden="true"></label>
                 <label><input type="checkbox" name="tipo-discapacidad-baj" value="Motriz"><span>Motriz</span><img src="svg/discapacidad/motriz.svg" alt="" aria-hidden="true"></label>
                 <label><input type="checkbox" name="tipo-discapacidad-baj" value="Cognitiva"><span>Cognitiva</span><img src="svg/discapacidad/cognitiva.svg" alt="" aria-hidden="true"></label>
-                <label><input type="checkbox" name="tipo-discapacidad-baj" value="Visual"><span>Visual</span><img src="svg/discapacidad/visual.svg" alt="" aria-hidden="true"></label>
-                <label><input type="checkbox" name="tipo-discapacidad-baj" value="Parkinson" checked><span>Parkinson</span><img src="svg/discapacidad/parkinson.svg" alt="" aria-hidden="true"></label>
+                <label><input type="checkbox" name="tipo-discapacidad-baj" value="Visual" checked><span>Visual</span><img src="svg/discapacidad/visual.svg" alt="" aria-hidden="true"></label>
+                <label><input type="checkbox" name="tipo-discapacidad-baj" value="Parkinson"><span>Parkinson</span><img src="svg/discapacidad/parkinson.svg" alt="" aria-hidden="true"></label>
               </div>
             </fieldset>
             <div class="contenedor-categoria">
@@ -341,12 +341,6 @@
                 <span class="btn-cate-txt">Subcategoría<span class="marca-obligatorio" aria-hidden="true">*</span><span class="sr-only"> (obligatorio)</span></span>
                 <span id="valor-n2" class="btn-sele-filt">No seleccionada</span>
                 <img loading="lazy" decoding="async" id="icono-elegido-n2" class="cap-icon-cate" src="" alt="" style="display: none;">
-              </button>
-
-              <button type="button" class="btn-cate" onclick="abrirModalNivel3('')">
-                <span class="btn-cate-txt">Tipo<span class="marca-obligatorio" aria-hidden="true">*</span><span class="sr-only"> (obligatorio)</span></span>
-                <span id="valor-n3" class="btn-sele-filt">No seleccionada</span>
-                <img loading="lazy" decoding="async" id="icono-elegido-n3" class="cap-icon-cate" src="" alt="" style="display: none;">
               </button>
             </div>
             <p id="aviso-categoria" class="mensaje-error-campo" role="alert" hidden></p>
@@ -521,8 +515,8 @@
                 <label><input type="checkbox" name="tipo-discapacidad-com" value="Auditiva"><span>Auditiva</span><img src="svg/discapacidad/auditiva.svg" alt="" aria-hidden="true"></label>
                 <label><input type="checkbox" name="tipo-discapacidad-com" value="Motriz"><span>Motriz</span><img src="svg/discapacidad/motriz.svg" alt="" aria-hidden="true"></label>
                 <label><input type="checkbox" name="tipo-discapacidad-com" value="Cognitiva"><span>Cognitiva</span><img src="svg/discapacidad/cognitiva.svg" alt="" aria-hidden="true"></label>
-                <label><input type="checkbox" name="tipo-discapacidad-com" value="Visual"><span>Visual</span><img src="svg/discapacidad/visual.svg" alt="" aria-hidden="true"></label>
-                <label><input type="checkbox" name="tipo-discapacidad-com" value="Parkinson" checked><span>Parkinson</span><img src="svg/discapacidad/parkinson.svg" alt="" aria-hidden="true"></label>
+                <label><input type="checkbox" name="tipo-discapacidad-com" value="Visual" checked><span>Visual</span><img src="svg/discapacidad/visual.svg" alt="" aria-hidden="true"></label>
+                <label><input type="checkbox" name="tipo-discapacidad-com" value="Parkinson"><span>Parkinson</span><img src="svg/discapacidad/parkinson.svg" alt="" aria-hidden="true"></label>
               </div>
             </fieldset>
             <div class="form-row">
@@ -538,12 +532,6 @@
                   <span class="btn-cate-txt">Subcategoría<span class="marca-obligatorio" aria-hidden="true">*</span><span class="sr-only"> (obligatorio)</span></span>
                   <span id="valor-n2-com" class="btn-sele-filt">No seleccionada</span>
                   <img loading="lazy" decoding="async" id="icono-elegido-n2-com" class="cap-icon-cate" src="" alt=""
-                    style="display: none;">
-                </button>
-                <button type="button" class="btn-cate" onclick="abrirModalNivel3('-com')">
-                  <span class="btn-cate-txt">Tipo<span class="marca-obligatorio" aria-hidden="true">*</span><span class="sr-only"> (obligatorio)</span></span>
-                  <span id="valor-n3-com" class="btn-sele-filt">No seleccionada</span>
-                  <img loading="lazy" decoding="async" id="icono-elegido-n3-com" class="cap-icon-cate" src="" alt=""
                     style="display: none;">
                 </button>
               </div>
@@ -797,7 +785,7 @@
               <img loading="lazy" decoding="async" src="svg/cate/auto/auto.png" class="cap-icon-linea-superior" alt=""
                >
               <div class="text-linea-superior">
-                <h1 class="titulo-linea-superior">Autonomía y cuidado </h1>
+                <h1 class="titulo-linea-superior">Autonomía y cuidado</h1>
               </div>
             </div>
 
@@ -811,26 +799,22 @@
         </div>
         <div class="categorias">
           <div class="grid-capsulas">
-            <button type="button" class="btn-cate" data-vista="vista-higiene" onclick="seleccionarCategoria1(this)">
+            <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
               <span class="btn-cate-txt">Higiene</span>
               <img loading="lazy" decoding="async" src="svg/cate/auto/higiene/higiene.png" class="cap-icon-cate" alt="">
             </button>
-
             <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
               <span class="btn-cate-txt">Comer y beber</span>
               <img loading="lazy" decoding="async" src="svg/cate/auto/alimentacion/comer.png" class="cap-icon-cate" alt="">
             </button>
-
-            <button type="button" class="btn-cate" data-vista="vista-vestir" onclick="seleccionarCategoria1(this)">
+            <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
               <span class="btn-cate-txt">Vestirse</span>
               <img loading="lazy" decoding="async" src="svg/cate/auto/vestirse/ropa.png" class="cap-icon-cate" alt="">
             </button>
-
             <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
               <span class="btn-cate-txt">Medicación</span>
               <img loading="lazy" decoding="async" src="svg/cate/auto/medi/medicamento.png" class="cap-icon-cate" alt="">
             </button>
-
             <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
               <span class="btn-cate-txt">Otros</span>
               <img loading="lazy" decoding="async" src="svg/cate/otros.svg" class="cap-icon-cate" alt="">
@@ -860,7 +844,7 @@
             <div class="cabecera-superior-icono">
               <img loading="lazy" decoding="async" src="svg/cate/ocio/ocio.png" class="cap-icon-linea-superior" alt="">
               <div class="text-linea-superior">
-                <h1 class="titulo-linea-superior">Ocio </h1>
+                <h1 class="titulo-linea-superior">Ocio</h1>
               </div>
             </div>
 
@@ -880,22 +864,21 @@
               <img loading="lazy" decoding="async" src="svg/cate/ocio/juegos.png" class="cap-icon-cate" alt="">
             </button>
             <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Deportes</span>
+              <span class="btn-cate-txt">Deporte</span>
               <img loading="lazy" decoding="async" src="svg/cate/ocio/deporte.png" class="cap-icon-cate" alt="">
+            </button>
+            <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
+              <span class="btn-cate-txt">Manualidades</span>
+              <img loading="lazy" decoding="async" src="svg/cate/ocio/manualidades.png" class="cap-icon-cate" alt="">
             </button>
             <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
               <span class="btn-cate-txt">Escritura</span>
               <img loading="lazy" decoding="async" src="svg/cate/ocio/escribir.png" class="cap-icon-cate" alt="">
             </button>
             <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Aprendizaje</span>
+              <span class="btn-cate-txt">Estudio</span>
               <img loading="lazy" decoding="async" src="svg/cate/ocio/aprender.png" class="cap-icon-cate" alt="">
             </button>
-            <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Manualidades</span>
-              <img loading="lazy" decoding="async" src="svg/cate/ocio/manualidades.png" class="cap-icon-cate" alt="">
-            </button>
-
             <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
               <span class="btn-cate-txt">Otros</span>
               <img loading="lazy" decoding="async" src="svg/cate/otros.svg" class="cap-icon-cate" alt="">
@@ -912,7 +895,7 @@
             <nav class="migas-pan" aria-label="Ruta de navegación">
               <span class="miga-enlace" onclick="regresarvolver(1)">Ver Productos</span>
               <span class="miga-separador">&rarr;</span>
-              <span class="miga-actual">Movilidad</span>
+              <span class="miga-actual">Movilidad y orientación</span>
             </nav>
 
             <button type="button" class="btn-volver" onclick="regresarvolver(1)">
@@ -925,7 +908,7 @@
               <img loading="lazy" decoding="async" src="svg/cate/movilidad/mover.png" class="cap-icon-linea-superior" alt=""
                >
               <div class="text-linea-superior">
-                <h1 class="titulo-linea-superior">Movilidad </h1>
+                <h1 class="titulo-linea-superior">Movilidad y orientación</h1>
               </div>
             </div>
 
@@ -940,35 +923,23 @@
         </div>
         <div class="categorias">
           <div class="grid-capsulas">
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Bloqueos</span>
-              <img loading="lazy" decoding="async" src="svg/cate/movilidad/bloqueo.png" class="cap-icon-cate" alt="">
+            <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
+              <span class="btn-cate-txt">Bastones y accesorios</span>
+              <img loading="lazy" decoding="async" src="svg/cate/movilidad/baston.png" class="cap-icon-cate" alt="">
             </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Paseos</span>
+            <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
+              <span class="btn-cate-txt">Moverse por casa</span>
+              <img loading="lazy" decoding="async" src="svg/cate/hogar/casa.png" class="cap-icon-cate" alt="">
+            </button>
+            <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
+              <span class="btn-cate-txt">Orientarse en la calle</span>
               <img loading="lazy" decoding="async" src="svg/cate/movilidad/paseo.png" class="cap-icon-cate" alt="">
             </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
+            <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
               <span class="btn-cate-txt">Transporte</span>
               <img loading="lazy" decoding="async" src="svg/cate/movilidad/coche.png" class="cap-icon-cate" alt="">
             </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Andadores</span>
-              <img loading="lazy" decoding="async" src="svg/cate/movilidad/andador.png" class="cap-icon-cate" alt="">
-            </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Silla de ruedas</span>
-              <img loading="lazy" decoding="async" src="svg/cate/movilidad/silla.png" class="cap-icon-cate" alt="">
-            </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Incorporarse</span>
-              <img loading="lazy" decoding="async" src="svg/cate/movilidad/levantar.png" class="cap-icon-cate" alt="">
-            </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Ejercicio</span>
-              <img loading="lazy" decoding="async" src="svg/cate/movilidad/ejercicio.png" class="cap-icon-cate" alt="">
-            </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
+            <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
               <span class="btn-cate-txt">Otros</span>
               <img loading="lazy" decoding="async" src="svg/cate/otros.svg" class="cap-icon-cate" alt="">
             </button>
@@ -997,7 +968,7 @@
               <img loading="lazy" decoding="async" src="svg/cate/comunica/comunicación.png" class="cap-icon-linea-superior" alt=""
                >
               <div class="text-linea-superior">
-                <h1 class="titulo-linea-superior">Comunicación </h1>
+                <h1 class="titulo-linea-superior">Comunicación</h1>
               </div>
             </div>
 
@@ -1012,35 +983,27 @@
         </div>
         <div class="categorias">
           <div class="grid-capsulas">
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
+            <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
+              <span class="btn-cate-txt">Leer</span>
+              <img loading="lazy" decoding="async" src="svg/cate/comunica/leer.png" class="cap-icon-cate" alt="">
+            </button>
+            <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
+              <span class="btn-cate-txt">Braille</span>
+              <img loading="lazy" decoding="async" src="svg/cate/comunica/braille.png" class="cap-icon-cate" alt="">
+            </button>
+            <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
               <span class="btn-cate-txt">Teléfonos</span>
               <img loading="lazy" decoding="async" src="svg/cate/comunica/teléfono.png" class="cap-icon-cate" alt="">
             </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Escribir</span>
-              <img loading="lazy" decoding="async" src="svg/cate/comunica/escribir.png" class="cap-icon-cate" alt="">
-            </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Lectura</span>
-              <img loading="lazy" decoding="async" src="svg/cate/comunica/leer.png" class="cap-icon-cate" alt="">
-            </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Digital</span>
+            <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
+              <span class="btn-cate-txt">Ordenador y tableta</span>
               <img loading="lazy" decoding="async" src="svg/cate/comunica/ordenador.png" class="cap-icon-cate" alt="">
             </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Comunicación no verbal</span>
-              <img loading="lazy" decoding="async" src="svg/cate/comunica/no_verbal.png" class="cap-icon-cate" alt="">
-            </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
+            <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
               <span class="btn-cate-txt">Medios de comunicación</span>
               <img loading="lazy" decoding="async" src="svg/cate/comunica/medios.png" class="cap-icon-cate" alt="">
             </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Escuchar</span>
-              <img loading="lazy" decoding="async" src="svg/cate/comunica/escribir.png" class="cap-icon-cate" alt="">
-            </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
+            <button type="button" class="btn-cate" onclick="abrirCatalogoProductos(this)">
               <span class="btn-cate-txt">Otros</span>
               <img loading="lazy" decoding="async" src="svg/cate/otros.svg" class="cap-icon-cate" alt="">
             </button>
@@ -1093,10 +1056,6 @@
               <img loading="lazy" decoding="async" src="svg/cate/tareas/cama.png" class="cap-icon-cate" alt="">
             </button>
             <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Fregar</span>
-              <img loading="lazy" decoding="async" src="svg/cate/tareas/fregar.png" class="cap-icon-cate" alt="">
-            </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
               <span class="btn-cate-txt">Limpiar la casa</span>
               <img loading="lazy" decoding="async" src="svg/cate/tareas/fregar.png" class="cap-icon-cate" alt="">
             </button>
@@ -1105,86 +1064,17 @@
               <img loading="lazy" decoding="async" src="svg/cate/tareas/planchar.png" class="cap-icon-cate" alt="">
             </button>
             <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Orden</span>
-              <img loading="lazy" decoding="async" src="svg/cate/tareas/ordenar.png" class="cap-icon-cate" alt="">
+              <span class="btn-cate-txt">Identificar y etiquetar</span>
+              <img loading="lazy" decoding="async" src="svg/cate/auto/alimentacion/latas.png" class="cap-icon-cate" alt="">
             </button>
             <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
               <span class="btn-cate-txt">Gestiones</span>
               <img loading="lazy" decoding="async" src="svg/cate/tareas/firmar.png" class="cap-icon-cate" alt="">
             </button>
             <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Otros</span>
-              <img loading="lazy" decoding="async" src="svg/cate/otros.svg" class="cap-icon-cate" alt="">
+              <span class="btn-cate-txt">Hora y agenda</span>
+              <img loading="lazy" decoding="async" src="svg/cate/hogar/orga/calendario.png" class="cap-icon-cate" alt="">
             </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!--NIVEL 2-->
-    <div id="vista-higiene" class="subvista-contenido" style="display: none;">
-      <div class="contenedor-dinamico">
-        <div class="linea_superior">
-          <div class="grid-linea-superior">
-
-            <nav class="migas-pan" aria-label="Ruta de navegación">
-              <span class="miga-enlace" onclick="regresarvolver(1)">Ver Productos</span>
-              <span class="miga-separador">&rarr;</span>
-              <span class="miga-enlace" onclick="regresarAnterior()">Autonomía y cuidado</span>
-              <span class="miga-separador">&rarr;</span>
-              <span class="miga-actual">Higiene</span>
-            </nav>
-
-            <button type="button" class="btn-volver" onclick="regresarAnterior(1)">
-              <span class="cabecera-linea-volver">
-                <img loading="lazy" decoding="async" src="svg/volver/volver.svg" class="icon-btn-volver" alt="">
-                <span class="texto-nav-seccion">Volver</span>
-              </span>
-            </button>
-            <div class="cabecera-superior-icono">
-              <img loading="lazy" decoding="async" src="svg/cate/auto/higiene/higiene.png" class="cap-icon-linea-superior" alt=""
-               >
-              <div class="text-linea-superior">
-                <h1 class="titulo-linea-superior">Higiene</h1>
-              </div>
-            </div>
-
-            <div class="caja-contenedor-busqueda" role="search">
-              <img loading="lazy" decoding="async" src="svg/buscar/buscar_input.svg" class="cap-icon-busqueda" alt="">
-              <input type="text" class="input-busqueda" placeholder="Buscar producto" maxlength="20"
-                aria-label="Buscar producto" onkeydown="ejecutarBusquedaTexto(event, this)" enterkeyhint="search">
-              <button type="button" class="btn-lanzar-busqueda" onclick="lanzarBusqueda(this)">Buscar</button>
-            </div>
-
-          </div>
-        </div>
-        <div class="categorias">
-          <div class="grid-capsulas">
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Ducha y baño</span>
-              <img loading="lazy" decoding="async" src="svg/cate/auto/higiene/ducha.png" class="cap-icon-cate" alt="">
-            </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Aseo</span>
-              <img loading="lazy" decoding="async" src="svg/cate/auto/higiene/bano.png" class="cap-icon-cate" alt="">
-            </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Maquillaje</span>
-              <img loading="lazy" decoding="async" src="svg/cate/auto/higiene/maquillar.png" class="cap-icon-cate" alt="">
-            </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Pelos</span>
-              <img loading="lazy" decoding="async" src="svg/cate/auto/higiene/pelo.png" class="cap-icon-cate" alt="">
-            </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Cuidado de boca</span>
-              <img loading="lazy" decoding="async" src="svg/cate/auto/higiene/boca.png" class="cap-icon-cate" alt="">
-            </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Manos y pies</span>
-              <img loading="lazy" decoding="async" src="svg/cate/auto/higiene/mano.png" class="cap-icon-cate" alt="">
-            </button>
-
             <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
               <span class="btn-cate-txt">Otros</span>
               <img loading="lazy" decoding="async" src="svg/cate/otros.svg" class="cap-icon-cate" alt="">
@@ -1194,83 +1084,6 @@
       </div>
     </div>
 
-    <div id="vista-vestir" class="subvista-contenido" style="display: none;">
-      <div class="contenedor-dinamico">
-        <div class="linea_superior">
-          <div class="grid-linea-superior">
-
-            <nav class="migas-pan" aria-label="Ruta de navegación">
-              <span class="miga-enlace" onclick="regresarvolver(1)">Ver Productos</span>
-              <span class="miga-separador">&rarr;</span>
-              <span class="miga-enlace" onclick="regresarAnterior()">Autonomía y cuidado</span>
-              <span class="miga-separador">&rarr;</span>
-              <span class="miga-actual">Vestirse</span>
-            </nav>
-
-            <button type="button" class="btn-volver" onclick="regresarAnterior()">
-              <span class="cabecera-linea-volver">
-                <img loading="lazy" decoding="async" src="svg/volver/volver.svg" class="icon-btn-volver" alt="">
-                <span class="texto-nav-seccion">Volver</span>
-              </span>
-            </button>
-            <div class="cabecera-superior-icono">
-              <img loading="lazy" decoding="async" src="svg/cate/auto/vestirse/ropa.png" class="cap-icon-linea-superior" alt=""
-               >
-              <div class="text-linea-superior">
-                <h1 class="titulo-linea-superior">Vestirse</h1>
-              </div>
-            </div>
-
-            <div class="caja-contenedor-busqueda" role="search">
-              <img loading="lazy" decoding="async" src="svg/buscar/buscar_input.svg" class="cap-icon-busqueda" alt="">
-              <input type="text" class="input-busqueda" placeholder="Buscar producto" maxlength="20"
-                aria-label="Buscar producto" onkeydown="ejecutarBusquedaTexto(event, this)" enterkeyhint="search">
-              <button type="button" class="btn-lanzar-busqueda" onclick="lanzarBusqueda(this)">Buscar</button>
-            </div>
-
-          </div>
-        </div>
-        <div class="categorias">
-          <div class="grid-capsulas">
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Parte superior</span>
-              <img loading="lazy" decoding="async" src="svg/cate/auto/vestirse/camiseta.png" class="cap-icon-cate" alt="">
-            </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Parte inferior</span>
-              <img loading="lazy" decoding="async" src="svg/cate/auto/vestirse/pantalon.png" class="cap-icon-cate" alt="">
-            </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Calzado</span>
-              <img loading="lazy" decoding="async" src="svg/cate/auto/vestirse/calzado.png" class="cap-icon-cate" alt="">
-            </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Ropa adaptada</span>
-              <img loading="lazy" decoding="async" src="svg/cate/auto/vestirse/adaptada.png" class="cap-icon-cate" alt="">
-            </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Ropa interior</span>
-              <img loading="lazy" decoding="async" src="svg/cate/auto/vestirse/interior.png" class="cap-icon-cate" alt="">
-            </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Botones y cremalleras</span>
-              <img loading="lazy" decoding="async" src="svg/cate/auto/vestirse/boton_cremallera.png" class="cap-icon-cate"
-                alt="">
-            </button>
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Ayudas para vestirse</span>
-              <img loading="lazy" decoding="async" src="svg/cate/auto/vestirse/ayudas.png" class="cap-icon-cate"
-                alt="">
-            </button>
-
-            <button type="button" class="btn-cate-4" onclick="abrirCatalogoProductos(this)">
-              <span class="btn-cate-txt">Otros</span>
-              <img loading="lazy" decoding="async" src="svg/cate/otros.svg" class="cap-icon-cate" alt="">
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
     <!--VISTA VER PRODUCTOS MOLDE-->
     <div id="vista-productos-final" class="subvista-contenido" style="display: none;">
       <div class="contenedor-dinamico">
@@ -1365,47 +1178,211 @@
     </main>
   </div>
 
-  <!--DIALOGOS CATEGORIA NIVEL 3-->
-  <dialog id="modal-n3-higiene" class="modal-cate">
+  <!--DIÁLOGOS DE CATEGORÍAS propios de esta web (sustituyen a los de dialogos_catalogo.js)-->
+  <dialog id="modal-categorias1" class="modal-cate" aria-labelledby="titulo-modal-categorias1">
     <div class="modal-cabecera">
       <div class="btn-cabecera-linea-modal">
-        <h2 class="titulo-menu-acce">Higiene: elige el tipo</h2>
+        <h2 class="titulo-menu-acce" id="titulo-modal-categorias1">Elige una categoría</h2>
       </div>
       <button type="button" class="btn-cerrar-modal" aria-label="Cerrar ventana" title="Cerrar ventana" onclick="cerrarModal(this)">×</button>
     </div>
-
     <div class="grid-capsulas">
-      <button type="button" class="btn-cate-4" onclick="seleccionarCategoria3(this)">
-        <span class="btn-cate-txt">Ducha y baño</span>
-        <img loading="lazy" decoding="async" src="svg/cate/auto/higiene/ducha.png" class="cap-icon-cate" alt="">
+      <button type="button" class="btn-cate" onclick="seleccionarCatenivel1(this)">
+        <span class="btn-cate-txt">Autonomía y cuidado</span>
+        <img loading="lazy" decoding="async" src="svg/cate/auto/auto.png" class="cap-icon-cate" alt="">
       </button>
-
-      <button type="button" class="btn-cate-4" onclick="seleccionarCategoria3(this)">
-        <span class="btn-cate-txt">Aseo</span>
-        <img loading="lazy" decoding="async" src="svg/cate/auto/higiene/bano.png" class="cap-icon-cate" alt="">
+      <button type="button" class="btn-cate" onclick="seleccionarCatenivel1(this)">
+        <span class="btn-cate-txt">Movilidad y orientación</span>
+        <img loading="lazy" decoding="async" src="svg/cate/movilidad/mover.png" class="cap-icon-cate" alt="">
       </button>
-
-      <button type="button" class="btn-cate-4" onclick="seleccionarCategoria3(this)">
-        <span class="btn-cate-txt">Maquillaje</span>
-        <img loading="lazy" decoding="async" src="svg/cate/auto/higiene/maquillar.png" class="cap-icon-cate" alt="">
+      <button type="button" class="btn-cate" onclick="seleccionarCatenivel1(this)">
+        <span class="btn-cate-txt">Comunicación</span>
+        <img loading="lazy" decoding="async" src="svg/cate/comunica/comunicación.png" class="cap-icon-cate" alt="">
       </button>
-
-      <button type="button" class="btn-cate-4" onclick="seleccionarCategoria3(this)">
-        <span class="btn-cate-txt">Pelos</span>
-        <img loading="lazy" decoding="async" src="svg/cate/auto/higiene/pelo.png" class="cap-icon-cate" alt="">
+      <button type="button" class="btn-cate" onclick="seleccionarCatenivel1(this)">
+        <span class="btn-cate-txt">Tareas cotidianas</span>
+        <img loading="lazy" decoding="async" src="svg/cate/tareas/tareas.png" class="cap-icon-cate" alt="">
       </button>
-
-      <button type="button" class="btn-cate-4" onclick="seleccionarCategoria3(this)">
-        <span class="btn-cate-txt">Cuidado de boca</span>
-        <img loading="lazy" decoding="async" src="svg/cate/auto/higiene/boca.png" class="cap-icon-cate" alt="">
+      <button type="button" class="btn-cate" onclick="seleccionarCatenivel1(this)">
+        <span class="btn-cate-txt">Ocio</span>
+        <img loading="lazy" decoding="async" src="svg/cate/ocio/ocio.png" class="cap-icon-cate" alt="">
       </button>
-
-      <button type="button" class="btn-cate-4" onclick="seleccionarCategoria3(this)">
-        <span class="btn-cate-txt">Manos y pies</span>
-        <img loading="lazy" decoding="async" src="svg/cate/auto/higiene/mano.png" class="cap-icon-cate" alt="">
+      <button type="button" class="btn-cate" onclick="seleccionarCatenivel1(this)">
+        <span class="btn-cate-txt">Otros</span>
+        <img loading="lazy" decoding="async" src="svg/cate/otros.svg" class="cap-icon-cate" alt="">
       </button>
+    </div>
+  </dialog>
 
-      <button type="button" class="btn-cate-4" onclick="seleccionarCategoria3(this)">
+  <dialog id="modal-autonomia" class="modal-cate" aria-labelledby="titulo-modal-autonomia">
+    <div class="modal-cabecera">
+      <div class="btn-cabecera-linea-modal">
+        <h2 class="titulo-menu-acce" id="titulo-modal-autonomia">Autonomía y cuidado</h2>
+      </div>
+      <button type="button" class="btn-cerrar-modal" aria-label="Cerrar ventana" title="Cerrar ventana" onclick="cerrarModal(this)">×</button>
+    </div>
+    <div class="grid-capsulas">
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Higiene</span>
+        <img loading="lazy" decoding="async" src="svg/cate/auto/higiene/higiene.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Comer y beber</span>
+        <img loading="lazy" decoding="async" src="svg/cate/auto/alimentacion/comer.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Vestirse</span>
+        <img loading="lazy" decoding="async" src="svg/cate/auto/vestirse/ropa.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Medicación</span>
+        <img loading="lazy" decoding="async" src="svg/cate/auto/medi/medicamento.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Otros</span>
+        <img loading="lazy" decoding="async" src="svg/cate/otros.svg" class="cap-icon-cate" alt="">
+      </button>
+    </div>
+  </dialog>
+
+  <dialog id="modal-movilidad" class="modal-cate" aria-labelledby="titulo-modal-movilidad">
+    <div class="modal-cabecera">
+      <div class="btn-cabecera-linea-modal">
+        <h2 class="titulo-menu-acce" id="titulo-modal-movilidad">Movilidad y orientación</h2>
+      </div>
+      <button type="button" class="btn-cerrar-modal" aria-label="Cerrar ventana" title="Cerrar ventana" onclick="cerrarModal(this)">×</button>
+    </div>
+    <div class="grid-capsulas">
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Bastones y accesorios</span>
+        <img loading="lazy" decoding="async" src="svg/cate/movilidad/baston.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Moverse por casa</span>
+        <img loading="lazy" decoding="async" src="svg/cate/hogar/casa.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Orientarse en la calle</span>
+        <img loading="lazy" decoding="async" src="svg/cate/movilidad/paseo.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Transporte</span>
+        <img loading="lazy" decoding="async" src="svg/cate/movilidad/coche.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Otros</span>
+        <img loading="lazy" decoding="async" src="svg/cate/otros.svg" class="cap-icon-cate" alt="">
+      </button>
+    </div>
+  </dialog>
+
+  <dialog id="modal-comunica" class="modal-cate" aria-labelledby="titulo-modal-comunica">
+    <div class="modal-cabecera">
+      <div class="btn-cabecera-linea-modal">
+        <h2 class="titulo-menu-acce" id="titulo-modal-comunica">Comunicación</h2>
+      </div>
+      <button type="button" class="btn-cerrar-modal" aria-label="Cerrar ventana" title="Cerrar ventana" onclick="cerrarModal(this)">×</button>
+    </div>
+    <div class="grid-capsulas">
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Leer</span>
+        <img loading="lazy" decoding="async" src="svg/cate/comunica/leer.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Braille</span>
+        <img loading="lazy" decoding="async" src="svg/cate/comunica/braille.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Teléfonos</span>
+        <img loading="lazy" decoding="async" src="svg/cate/comunica/teléfono.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Ordenador y tableta</span>
+        <img loading="lazy" decoding="async" src="svg/cate/comunica/ordenador.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Medios de comunicación</span>
+        <img loading="lazy" decoding="async" src="svg/cate/comunica/medios.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Otros</span>
+        <img loading="lazy" decoding="async" src="svg/cate/otros.svg" class="cap-icon-cate" alt="">
+      </button>
+    </div>
+  </dialog>
+
+  <dialog id="modal-productividad" class="modal-cate" aria-labelledby="titulo-modal-productividad">
+    <div class="modal-cabecera">
+      <div class="btn-cabecera-linea-modal">
+        <h2 class="titulo-menu-acce" id="titulo-modal-productividad">Tareas cotidianas</h2>
+      </div>
+      <button type="button" class="btn-cerrar-modal" aria-label="Cerrar ventana" title="Cerrar ventana" onclick="cerrarModal(this)">×</button>
+    </div>
+    <div class="grid-capsulas">
+      <button type="button" class="btn-cate-4" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Cocinar</span>
+        <img loading="lazy" decoding="async" src="svg/cate/tareas/cocinar.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate-4" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Hacer la cama</span>
+        <img loading="lazy" decoding="async" src="svg/cate/tareas/cama.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate-4" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Limpiar la casa</span>
+        <img loading="lazy" decoding="async" src="svg/cate/tareas/fregar.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate-4" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Cuidar la ropa</span>
+        <img loading="lazy" decoding="async" src="svg/cate/tareas/planchar.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate-4" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Identificar y etiquetar</span>
+        <img loading="lazy" decoding="async" src="svg/cate/auto/alimentacion/latas.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate-4" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Gestiones</span>
+        <img loading="lazy" decoding="async" src="svg/cate/tareas/firmar.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate-4" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Hora y agenda</span>
+        <img loading="lazy" decoding="async" src="svg/cate/hogar/orga/calendario.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate-4" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Otros</span>
+        <img loading="lazy" decoding="async" src="svg/cate/otros.svg" class="cap-icon-cate" alt="">
+      </button>
+    </div>
+  </dialog>
+
+  <dialog id="modal-ocio" class="modal-cate" aria-labelledby="titulo-modal-ocio">
+    <div class="modal-cabecera">
+      <div class="btn-cabecera-linea-modal">
+        <h2 class="titulo-menu-acce" id="titulo-modal-ocio">Ocio</h2>
+      </div>
+      <button type="button" class="btn-cerrar-modal" aria-label="Cerrar ventana" title="Cerrar ventana" onclick="cerrarModal(this)">×</button>
+    </div>
+    <div class="grid-capsulas">
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Juegos</span>
+        <img loading="lazy" decoding="async" src="svg/cate/ocio/juegos.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Deporte</span>
+        <img loading="lazy" decoding="async" src="svg/cate/ocio/deporte.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Manualidades</span>
+        <img loading="lazy" decoding="async" src="svg/cate/ocio/manualidades.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Escritura</span>
+        <img loading="lazy" decoding="async" src="svg/cate/ocio/escribir.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
+        <span class="btn-cate-txt">Estudio</span>
+        <img loading="lazy" decoding="async" src="svg/cate/ocio/aprender.png" class="cap-icon-cate" alt="">
+      </button>
+      <button type="button" class="btn-cate" onclick="seleccionarCategoria2(this)">
         <span class="btn-cate-txt">Otros</span>
         <img loading="lazy" decoding="async" src="svg/cate/otros.svg" class="cap-icon-cate" alt="">
       </button>
